@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="20dp">
+    <TextView
+        android:id="@+id/tv_area_name"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:text="北京（2）"
+        android:gravity="center"
+        android:textColor="@color/black"
+        android:textSize="10sp"
+        />
+    <View
+        android:layout_width="wrap_content"
+        android:layout_height="0.5dp"
+        android:background="@color/list_line_gray"
+        android:layout_alignParentBottom="true"
+        />
+</RelativeLayout>

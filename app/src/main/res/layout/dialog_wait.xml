@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_gravity="center"
+    android:gravity="center"
+    android:orientation="vertical"
+    app:cardBackgroundColor="#dc000000"
+    app:cardCornerRadius="15dp"
+    app:cardElevation="0px"
+    tools:context=".ui.dialog.WaitDialog">
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:minWidth="60dp"
+        android:maxWidth="100dp"
+        android:minHeight="60dp"
+        android:maxHeight="100dp"
+        android:padding="10dp">
+
+        <ddr.example.com.svgmapclient.widget.view.ProgressView
+            android:id="@+id/pw_progress"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            app:barColor="@android:color/white"
+            app:barWidth="2dp"
+            app:fillRadius="false"
+            app:linearProgress="true"
+            app:progressIndeterminate="true"
+            android:layout_centerHorizontal="true"
+            />
+
+        <ddr.example.com.svgmapclient.widget.textview.SmartTextView
+            android:id="@+id/tv_wait_message"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:maxLines="3"
+            android:text="加载中"
+            android:textColor="@color/white"
+            android:textSize="10sp"
+            android:layout_below="@id/pw_progress"
+            android:layout_centerHorizontal="true"
+            />
+    </RelativeLayout>
+
+</androidx.cardview.widget.CardView>
