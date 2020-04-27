@@ -382,6 +382,7 @@ public class MessageRoute {
                     Logger.e("Txt_Encrypt Error");
                     return null;
                 }
+
             }
         }else {
             System.arraycopy(intToBytesLittle(totalLen+10),0,bytes,4,4);

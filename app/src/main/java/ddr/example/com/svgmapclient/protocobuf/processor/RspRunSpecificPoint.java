@@ -11,6 +11,9 @@ import DDRVLNMapProto.DDRVLNMap;
 import ddr.example.com.svgmapclient.entity.MessageEvent;
 import ddr.example.com.svgmapclient.other.Logger;
 
+/**
+ * desc：发送AB命令的返回值
+ */
 public class RspRunSpecificPoint  extends BaseProcessor{
     @Override
     public void process(Context context, BaseCmd.CommonHeader commonHeader, GeneratedMessageLite msg) {

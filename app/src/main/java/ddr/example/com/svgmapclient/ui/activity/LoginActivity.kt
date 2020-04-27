@@ -30,8 +30,7 @@ class LoginActivity : DDRActivity() {
     private var passwordName = ""
     private var sharedPreferences: SharedPreferences? = null
     private var editor: SharedPreferences.Editor? = null
-
-    var tcpClient: TcpClient? = null
+    private var tcpClient: TcpClient? = null
     private var waitDialog: BaseDialog? = null
 
 
@@ -106,10 +105,6 @@ class LoginActivity : DDRActivity() {
     }
 
 
-    override fun onRestart() {
-        super.onRestart()
-
-    }
 
     override fun onDestroy() {
         super.onDestroy()

@@ -179,8 +179,6 @@ public class TcpClient extends BaseSocketConnection {
         public void onSocketWriteResponse(ConnectionInfo info, String action, ISendable data) {
 
         }
-
-
     }
 
     /**
@@ -322,7 +320,7 @@ public class TcpClient extends BaseSocketConnection {
         DDRVLNMap.reqGetDDRVLNMapEx reqGetDDRVLNMapEx=DDRVLNMap.reqGetDDRVLNMapEx.newBuilder()
                 .setOnerouteName(ByteString.copyFromUtf8(routeName))
                 .build();
-        sendData(CmdSchedule.commonHeader1(BaseCmd.eCltType.eModuleServer,CmdSchedule.ROBOT_1),reqGetDDRVLNMapEx);
+        sendData(CmdSchedule.commonHeader1(BaseCmd.eCltType.eModuleServer,CmdSchedule.ROBOT_2),reqGetDDRVLNMapEx);
         Logger.e("请求地图信息"+routeName);
     }
 
@@ -341,7 +339,7 @@ public class TcpClient extends BaseSocketConnection {
     public void requestFile1(){
         BaseCmd.reqClientGetMapInfo reqClientGetMapInfo=BaseCmd.reqClientGetMapInfo.newBuilder()
                 .build();
-        tcpClient.sendData(CmdSchedule.commonHeader1(BaseCmd.eCltType.eModuleServer,CmdSchedule.ROBOT_1),reqClientGetMapInfo);
+        tcpClient.sendData(CmdSchedule.commonHeader1(BaseCmd.eCltType.eModuleServer,CmdSchedule.ROBOT_2),reqClientGetMapInfo);
         Logger.e("请求文件中....");
     }
 

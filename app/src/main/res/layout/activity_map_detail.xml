@@ -42,13 +42,37 @@
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="@color/black"
+            android:background="#101112"
             >
             <ddr.example.com.svgmapclient.widget.view.ZoomImageView
                 android:id="@+id/zoomImage"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_centerInParent="true"
+                />
+            <ImageView
+                android:id="@+id/image"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"/>
+            <ImageView
+                android:id="@+id/ivMouse"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@mipmap/sign"
+                android:layout_above="@id/image"
+                android:layout_centerHorizontal="true"
+                />
+            <Button
+                android:id="@+id/btGoPoint"
+                android:layout_width="60dp"
+                android:layout_height="20dp"
+                android:layout_alignParentRight="true"
+                android:textSize="5sp"
+                android:textColor="@color/white"
+                android:text="前往标签处"
+                android:onClick="onClickView"
+                android:background="@drawable/bt_bg__map"
                 />
         </RelativeLayout>
     </LinearLayout>

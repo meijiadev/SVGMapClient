@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">SVGAndroidClient</string>
+    <string name="app_name">新零售客户端</string>
     <!-- 主页 -->
     <string name="home_exit_hint">再按一次退出</string>
 
