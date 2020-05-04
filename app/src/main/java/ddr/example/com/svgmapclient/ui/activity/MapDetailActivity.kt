@@ -58,6 +58,16 @@ class MapDetailActivity : DDRActivity() {
                 PointView.getInstance(context).setTargetPoints(locations)
                 zoomImage.invalidate()
             }
+            MessageEvent.Type.getSpecificPoint-> toast("开始前往")
+            MessageEvent.Type. getSpecificPoint1->toast("添加任务成功，等待前往")
+            MessageEvent.Type. getSpecificPoint2->toast("当前无任务！")
+            MessageEvent.Type. getSpecificPoint3->toast("当前没有定位")
+            MessageEvent.Type. getSpecificPoint4->toast("生成路径失败")
+            MessageEvent.Type. getSpecificPoint5->toast("当前处于自标定")
+            MessageEvent.Type. getSpecificPoint8->toast("返回待机点");
+            MessageEvent.Type. getSpecificPoint9->toast("完成当前任务，开始时段任务")
+            MessageEvent.Type. getSpecificPoint10-> toast("无任务，原地待命")
+            MessageEvent.Type. getSpecificPoint11-> toast("开始前往")
         }
     }
 
@@ -92,6 +102,8 @@ class MapDetailActivity : DDRActivity() {
         val bitmap = getBitmapFromByte(bitmaps)
         zoomImage!!.setBitmap(bitmap)
         zoomImage.isRotation(false)
+        PointView.getInstance(context).setTargetPoints1(targetPoints)
+        zoomImage.invalidate()
 
     }
 
@@ -161,6 +173,7 @@ class MapDetailActivity : DDRActivity() {
             }
         }
     }
+
 
     override fun onDestroy() {
         super.onDestroy()

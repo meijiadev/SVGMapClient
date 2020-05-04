@@ -313,6 +313,28 @@ public class TcpClient extends BaseSocketConnection {
     }
 
 
+    private Thread updateBase0;
+    private boolean isUpdateNotify=true;
+    public void getNotify0(){
+        if (updateBase0==null){
+            updateBase0=new Thread(()->{
+                while (isUpdateNotify){
+                    BaseCmd.reqGetRobotStatusAndEnv reqGetRobotStatusAndEnv= BaseCmd.reqGetRobotStatusAndEnv.newBuilder()
+                            .setNType(0)
+                            .build();
+                    sendData(CmdSchedule.commonHeader(BaseCmd.eCltType.eModuleServer),reqGetRobotStatusAndEnv);
+                    try {
+                        Thread.sleep(500);
+                        Logger.d("请求基础状态信息");
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
+                    }
+                }
+            });
+        }
+        updateBase0.start();
+    }
+
     /**
      * 获得某个地图下的信息
      */
@@ -320,7 +342,7 @@ public class TcpClient extends BaseSocketConnection {
         DDRVLNMap.reqGetDDRVLNMapEx reqGetDDRVLNMapEx=DDRVLNMap.reqGetDDRVLNMapEx.newBuilder()
                 .setOnerouteName(ByteString.copyFromUtf8(routeName))
                 .build();
-        sendData(CmdSchedule.commonHeader1(BaseCmd.eCltType.eModuleServer,CmdSchedule.ROBOT_2),reqGetDDRVLNMapEx);
+        sendData(CmdSchedule.commonHeader1(BaseCmd.eCltType.eModuleServer,CmdSchedule.ROBOT_1),reqGetDDRVLNMapEx);
         Logger.e("请求地图信息"+routeName);
     }
 
@@ -339,7 +361,7 @@ public class TcpClient extends BaseSocketConnection {
     public void requestFile1(){
         BaseCmd.reqClientGetMapInfo reqClientGetMapInfo=BaseCmd.reqClientGetMapInfo.newBuilder()
                 .build();
-        tcpClient.sendData(CmdSchedule.commonHeader1(BaseCmd.eCltType.eModuleServer,CmdSchedule.ROBOT_2),reqClientGetMapInfo);
+        tcpClient.sendData(CmdSchedule.commonHeader1(BaseCmd.eCltType.eModuleServer,CmdSchedule.ROBOT_1),reqClientGetMapInfo);
         Logger.e("请求文件中....");
     }
 

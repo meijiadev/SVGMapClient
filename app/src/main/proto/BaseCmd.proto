@@ -1337,6 +1337,7 @@ enum enLidarMapEditorType
 	enLidarMapEditorType_Reset = 4;
 }
 
+
 message reqEditorLidarMap{
 	message eraseRange
 	{
@@ -1356,5 +1357,14 @@ message rspEditorLidarMap{
 	reqEditorLidarMap reqData = 2; // 收到的 reqEditorLidarMap 的值
 }
 
+
+// 获取上位机状态。具体数据不在 rspGetRobotStatusAndEnv 中体现。
+message reqGetRobotStatusAndEnv{
+	int32 nType = 1; // 0:Base 1:Env 2:OBS 3:LidarPt else Send all data.
+}
+
+message rspGetRobotStatusAndEnv{
+	int32 nType = 1;
+}
 
 // +++++++++++++++++++ Common message bodies +++++++++++++++++++ //

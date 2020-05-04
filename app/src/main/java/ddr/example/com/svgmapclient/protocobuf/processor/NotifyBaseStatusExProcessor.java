@@ -68,7 +68,7 @@ public class NotifyBaseStatusExProcessor extends BaseProcessor {
         }
         notifyBaseStatusExS.setNotifyBaseStatusExS(notifyBaseStatusExList);
         // 如果是retail_1机器人则填充一下默认的notifyBase
-        if (guid.equals(CmdSchedule.ROBOT_2)){
+        if (guid.equals(CmdSchedule.ROBOT_1)){
             NotifyBaseStatusEx.getInstance().setNotifyBaseStatusEx(notifyBaseStatusEx1);
         }else {
            // CmdSchedule.ROBOT_1=guid;

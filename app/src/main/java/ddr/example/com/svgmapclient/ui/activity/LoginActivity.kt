@@ -39,6 +39,7 @@ class LoginActivity : DDRActivity() {
         when (messageEvent.type) {
             MessageEvent.Type.wanLoginSuccess -> {
                 UdpClient.getInstance(context, ClientMessageDispatcher.getInstance()).close()
+                editor!!.putString("account", accountName)
                 editor!!.putString("password", passwordName)
                 editor!!.commit()
                 Logger.e("广域网登录成功")
@@ -46,11 +47,13 @@ class LoginActivity : DDRActivity() {
                     if (waitDialog != null && waitDialog!!.isShowing) {
                         waitDialog!!.dismiss()
                     }
+
                     startActivity(ChinaMapActivity::class.java)
                 }, 1000)
             }
             MessageEvent.Type.tcpConnected -> {
                 Logger.e("--------tcp连接成功")
+                tcpClient!!.getNotify0()
                 tcpClient!!.sendData(null, CmdSchedule.remoteLogin(accountName, passwordName))
             }
             else-> Logger.d("Nothing to update ")
@@ -72,6 +75,7 @@ class LoginActivity : DDRActivity() {
     override fun initData() {
         sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this)
         editor = sharedPreferences!!.edit()
+        account!!.setText(sharedPreferences!!.getString("account", ""))
         password!!.setText(sharedPreferences!!.getString("password", ""))
         tcpClient = TcpClient.getInstance(context, ClientMessageDispatcher.getInstance())
 

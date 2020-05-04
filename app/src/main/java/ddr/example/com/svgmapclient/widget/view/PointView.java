@@ -30,6 +30,7 @@ import ddr.example.com.svgmapclient.other.Logger;
 public class PointView   {
     public static PointView pointView;
     private List<TargetPoint> targetPoints1;
+    private List<TargetPoint> targetPoints;
 
     private Paint pointPaint,textPaint;
     private TargetPoint targetPoint;
@@ -56,6 +57,16 @@ public class PointView   {
      */
     public void setTargetPoints(List<TargetPoint> targetPoints){
         this.targetPoints1=targetPoints;
+    }
+
+
+    /**
+     * 显示被选中的点（多选）
+     * @param targetPoints
+     */
+    public void setTargetPoints1(List<TargetPoint> targetPoints){
+        this.targetPoints=targetPoints;
+
     }
 
 
@@ -123,12 +134,26 @@ public class PointView   {
                     xyEntity=zoomImageView.coordinate2View(xyEntity.getX(),xyEntity.getY());
                     float x= xyEntity.getX();
                     float y=  xyEntity.getY();
-                    matrix.setRotate(-targetPoints1.get(i).getTheta());
+                    angle=radianToangle(targetPoints1.get(i).getTheta());
+                    matrix.setRotate(-angle);
+                    Logger.d("------朝向："+-targetPoints1.get(i).getTheta());
                     targetBitmap1=Bitmap.createBitmap(targetBitmap,0,0,targetBitmap.getWidth(),targetBitmap.getWidth()  ,matrix,true);
                     canvas.drawBitmap(targetBitmap1,x-bitmapW/2,y-bitmapH/2,pointPaint);
                     canvas.drawText(targetPoints1.get(i).getName(),x,y+15,textPaint);
             }
         }
+        if (targetPoints != null) {
+            for (int i=0;i<targetPoints.size();i++){
+                XyEntity xyEntity=zoomImageView.toXorY(targetPoints.get(i).getX(),targetPoints.get(i).getY());
+                xyEntity=zoomImageView.coordinate2View(xyEntity.getX(),xyEntity.getY());
+                float x= xyEntity.getX();
+                float y=  xyEntity.getY();
+                canvas.drawCircle(x,y,7,pointPaint);
+                canvas.drawText(targetPoints.get(i).getName(),x,y+15,textPaint);
+            }
+        }
+
+
 
         if (targetPoint!=null){
             XyEntity xyEntity=zoomImageView.toXorY(targetPoint.getX(),targetPoint.getY());
